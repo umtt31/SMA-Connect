@@ -1,9 +1,10 @@
-import mysql from "mysql2";
+const mysql = require("mysql2");
 
-const connection = mysql.createConnection({
+const dbs = mysql.createConnection({
   host: "localhost",
   user: "root",
-  database: "test",
+  password: "123",
+  database: "sma_connect_test",
 });
 
-module.exports = connection;
+module.exports = dbs;
