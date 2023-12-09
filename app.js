@@ -7,6 +7,9 @@ const db = require("./db");
 
 const userRoute = require("./routes/userRoute.js");
 const doctorRoute = require("./routes/doctorRoute.js");
+const pageRoute = require("./routes/pageRoute.js");
+const patientRoute = require("./routes/patientRoute.js");
+const donatorRoute = require("./routes/donatorRoute.js");
 
 const app = express();
 
@@ -46,8 +49,11 @@ app.use("*", (req, res, next) => {
   next();
 });
 
+app.use("/", pageRoute);
 app.use("/user", userRoute);
 app.use("/doctor", doctorRoute);
+app.use("/donator", donatorRoute);
+app.use("/patient", patientRoute);
 //app.use("/courses", courseRoute);
 
 app.listen(3000, () => {
