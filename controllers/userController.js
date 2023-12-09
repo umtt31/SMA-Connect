@@ -8,19 +8,22 @@ exports.getAllUsers = async (req, res) => {
 
 exports.register = async (req, res) => {
   const user = await User.create(req.body);
-  return res.json(data);
+  return res.json(user);
 };
 
 exports.login = async (req, res) => {
   const { email, password } = req.body;
   await User.findOne({ email }).then((user) => {
     if (user) {
-      if (password == user.password) {
-        req.session.userID = user._id;
-        res.send("login");
-      } else {
-        res.send("wrong password");
-      }
+      bcyrpt.compare(password, user.password, function (err, result) {
+        if (result) {
+          req.session.userID = user._id;
+          console.log(req.session.userID);
+          res.send("login");
+        } else {
+          res.send("wrong password");
+        }
+      });
     } else {
       res.send("no such email");
     }

@@ -13,7 +13,7 @@ const donatorRoute = require("./routes/donatorRoute.js");
 const app = express();
 
 mongoose
-  .connect('mongodb://localhost/sma-connect-test')
+  .connect('mongodb+srv://sma_connect:Ap48jNwen5FJJSWJ@cluster0.vtxc03j.mongodb.net/?retryWrites=true&w=majority')
   .then(() => {
     console.log('Connected to database');
   })
