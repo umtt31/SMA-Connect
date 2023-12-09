@@ -155,7 +155,7 @@
       </ul>
     </div>
 
-    <!-- Patient Sectionssadasfasfasf -->
+    <!-- Patient Sections -->
     <div class="patient-container">
       <div class="patient-section" onclick="showPatientName('Patient 1')">
         <img class="patient-image" src="patient1.jpg" alt="Patient 1" />
@@ -189,13 +189,46 @@
       <!-- Add more patient sections as needed -->
     </div>
 
-<!-- JavaScript to handle click action -->
-<script>
-  function showPatientName(patientName) {
-    alert("Selected patient: " + patientName);
-    // You can perform other actions here when a patient section is clicked
-  }
-</script>
+    <!-- JavaScript to handle click action -->
+    <script>
+      function showPatientName(patientName) {
+        alert("Selected patient: " + patientName);
+        // You can perform other actions here when a patient section is clicked
+      }
 
-</body>
+      function toggleMenu() {
+        var menu = document.getElementById("menuOptions");
+        menu.classList.toggle("show");
+      }
+
+      let timeout;
+      function showMenu() {
+        var menu = document.getElementById("menuOptions");
+        menu.classList.add("show");
+        clearTimeout(timeout);
+      }
+
+      function hideMenu() {
+        timeout = setTimeout(function () {
+          var menu = document.getElementById("menuOptions");
+          menu.classList.remove("show");
+        }, 100); // 100 milliseconds = 0,1 seconds
+      }
+
+      function goToProfile() {
+        // Redirect to the profile page or perform profile-related actions
+        alert("Go to Profile");
+      }
+
+      function signOut() {
+        // Perform sign-out actions
+        alert("Sign Out");
+      }
+
+      function goToHomePage() {
+        // Redirect to the home page (current page)
+        window.location.href = window.location.href;
+      }
+    </script>
+  </body>
 </html>
