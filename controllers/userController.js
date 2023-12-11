@@ -30,6 +30,12 @@ exports.login = async (req, res) => {
   });
 };
 
+exports.logout = (req, res) => {
+  req.session.destroy(() => {
+    res.status(200).redirect('/');
+  });
+}
+
 exports.deleteUser = async (req, res) => {
   await User.findByIdAndDelete(req.params._id);
   res.send("user deleted");
