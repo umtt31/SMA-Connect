@@ -34,7 +34,7 @@ app.use(
     secret: 'secret',
     resave: false,
     saveUninitialized: true,
-    store: MongoStore.create({ mongoUrl: 'mongodb://localhost/sma-connect-test' }),
+    store: MongoStore.create({ mongoUrl: 'mongodb+srv://sma_connect:Ap48jNwen5FJJSWJ@cluster0.vtxc03j.mongodb.net/?retryWrites=true&w=majority' }),
   })
 );
 
