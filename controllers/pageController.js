@@ -30,3 +30,6 @@ exports.getGalleryPage = (req, res) => {
     res.render('gallery.ejs')
 }
 
+exports.getHowItWorksPage = (req, res) => {
+    res.render('how-it-works.ejs')
+}

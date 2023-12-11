@@ -12,5 +12,6 @@ router.route("/contact").get(pageController.getContactPage);
 router.route("/donate").get(pageController.getDonatePage);
 router.route("/feed").get(pageController.getFeedPage);
 router.route("/gallery").get(pageController.getGalleryPage);
+router.route('/how-it-works').get(pageController.getHowItWorksPage)
 
 module.exports = router;
