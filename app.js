@@ -1,9 +1,8 @@
 const express = require("express");
-const mysql = require("mysql2");
 const methodOverride = require("method-override");
 const session = require("express-session");
-const MySQLStore = require("express-mysql-session")(session);
-const db = require("./db");
+const mongoose = require('mongoose');
+const MongoStore = require('connect-mongo');
 
 const userRoute = require("./routes/userRoute.js");
 const doctorRoute = require("./routes/doctorRoute.js");
@@ -13,18 +12,16 @@ const donatorRoute = require("./routes/donatorRoute.js");
 
 const app = express();
 
+mongoose
+  .connect('mongodb+srv://sma_connect:Ap48jNwen5FJJSWJ@cluster0.vtxc03j.mongodb.net/?retryWrites=true&w=majority')
+  .then(() => {
+    console.log('Connected to database');
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
 app.set("view engine", "ejs");
-
-const dbConfig = {
-  host: "localhost",
-  user: "root",
-  password: "123",
-  database: "sma_connect_test",
-};
-
-const pool = mysql.createPool(dbConfig);
-
-const sessionStore = new MySQLStore({ dbConfig }, pool); // Change this line
 
 global.userIn = null;
 
@@ -34,13 +31,10 @@ app.use(express.json());
 app.use(methodOverride("_method", { methods: ["GET", "POST"] }));
 app.use(
   session({
-    secret: "secret",
+    secret: 'secret',
     resave: false,
     saveUninitialized: true,
-    cookie: {
-      maxAge: 3600000, // 1 hour (optional, set the expiration time for the session cookie)
-    },
-    store: sessionStore,
+    store: MongoStore.create({ mongoUrl: 'mongodb://localhost/sma-connect-test' }),
   })
 );
 
@@ -54,7 +48,6 @@ app.use("/user", userRoute);
 app.use("/doctor", doctorRoute);
 app.use("/donator", donatorRoute);
 app.use("/patient", patientRoute);
-//app.use("/courses", courseRoute);
 
 app.listen(3000, () => {
   console.log(`Server running on port : 3000`);
