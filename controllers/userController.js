@@ -19,7 +19,7 @@ exports.login = async (req, res) => {
         if (result) {
           req.session.userID = user._id;
           console.log(req.session.userID);
-          res.send("login");
+          res.redirect("/");
         } else {
           res.send("wrong password");
         }

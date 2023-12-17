@@ -1,21 +1,25 @@
 const express = require("express");
 const methodOverride = require("method-override");
 const session = require("express-session");
-const mongoose = require('mongoose');
-const MongoStore = require('connect-mongo');
+const mongoose = require("mongoose");
+const MongoStore = require("connect-mongo");
 
 const userRoute = require("./routes/userRoute.js");
 const doctorRoute = require("./routes/doctorRoute.js");
 const pageRoute = require("./routes/pageRoute.js");
 const patientRoute = require("./routes/patientRoute.js");
 const donatorRoute = require("./routes/donatorRoute.js");
+const campaignRoute = require("./routes/campaignRoute.js");
+const adminRoute = require("./routes/adminRoute");
 
 const app = express();
 
 mongoose
-  .connect('mongodb+srv://sma_connect:Ap48jNwen5FJJSWJ@cluster0.vtxc03j.mongodb.net/?retryWrites=true&w=majority')
+  .connect(
+    "mongodb+srv://sma_connect:Ap48jNwen5FJJSWJ@cluster0.vtxc03j.mongodb.net/?retryWrites=true&w=majority"
+  )
   .then(() => {
-    console.log('Connected to database');
+    console.log("Connected to database");
   })
   .catch((err) => {
     console.log(err);
@@ -31,10 +35,13 @@ app.use(express.json());
 app.use(methodOverride("_method", { methods: ["GET", "POST"] }));
 app.use(
   session({
-    secret: 'secret',
+    secret: "secret",
     resave: false,
     saveUninitialized: true,
-    store: MongoStore.create({ mongoUrl: 'mongodb+srv://sma_connect:Ap48jNwen5FJJSWJ@cluster0.vtxc03j.mongodb.net/?retryWrites=true&w=majority' }),
+    store: MongoStore.create({
+      mongoUrl:
+        "mongodb+srv://sma_connect:Ap48jNwen5FJJSWJ@cluster0.vtxc03j.mongodb.net/?retryWrites=true&w=majority",
+    }),
   })
 );
 
@@ -48,6 +55,8 @@ app.use("/user", userRoute);
 app.use("/doctor", doctorRoute);
 app.use("/donator", donatorRoute);
 app.use("/patient", patientRoute);
+app.use("/campaign", campaignRoute);
+app.use("/admin", adminRoute);
 
 app.listen(3000, () => {
   console.log(`Server running on port : 3000`);
