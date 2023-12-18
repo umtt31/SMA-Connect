@@ -12,7 +12,7 @@ const UserSchema = new Schema({
   phoneNumber: { type: String },
   role: {
     type: String,
-    enum: ["donator", "doctor", "patient"],
+    enum: ["donator", "doctor", "patient", 'admin'],
     default: "donator",
   },
 });

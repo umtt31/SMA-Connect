@@ -4,6 +4,10 @@ const patientController = require("../controllers/patientController.js");
 
 const router = express.Router();
 
+router.route("").get(patientController.getAllPatients);
+router.route("").post(patientController.createPatient);
+router.route("/createCampaign").post(patientController.createCampaign);
+
 // router.route("").get(userController.getAllUsers);
 // router.route("/register").post(userController.register);
 // router.route("/login").post(userController.login);
