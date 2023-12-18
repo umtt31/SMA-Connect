@@ -22,3 +22,15 @@ exports.approvePatient = async (req, res) => {
   patient.save();
   res.json("approved");
 };
+
+exports.getDashboardPage = (req, res) => {
+  res.render('doctor.ejs')
+}
+
+exports.getProfilePage = (req, res) => {
+  res.render('profile.ejs')
+}
+
+exports.getPatientPage = (req, res) => {
+  res.render('patients.ejs')
+}
