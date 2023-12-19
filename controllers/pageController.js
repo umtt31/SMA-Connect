@@ -19,11 +19,11 @@ exports.getContactPage = (req, res) => {
 };
 
 exports.getDonatePage = (req, res) => {
-  res.render("donate.ejs");
+  res.render("donation.ejs");
 };
 
 exports.getFeedPage = (req, res) => {
-  res.render("feed-page.ejs");
+  res.render("feed-one.ejs");
 };
 
 exports.getGalleryPage = (req, res) => {
