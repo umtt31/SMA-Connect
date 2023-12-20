@@ -28,9 +28,9 @@ exports.getDashboardPage = (req, res) => {
 }
 
 exports.getProfilePage = (req, res) => {
-  res.render('profile.ejs')
+  res.render('patients.ejs')
 }
 
 exports.getPatientPage = (req, res) => {
-  res.render('patients.ejs')
+  res.render('profile.ejs')
 }
