@@ -6,7 +6,7 @@ const donatorController = require("../controllers/donatorController.js");
 const router = express.Router();
 
 router.route("").get(campaignController.getAllCampaigns);
-router.route("/:campaignId").get(); // single campaign page
+router.route("/:campaignId").get(campaignController.getSingleCampaignPage); // single campaign page
 router.route("/:campaignId").post(donatorController.makeDonation);
 
 module.exports = router;

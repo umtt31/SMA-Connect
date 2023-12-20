@@ -1,11 +1,8 @@
-
-
 <!-- .site-section -->
 
+<!-- Hakan Patients Code -->
 
-    <!-- Hakan Patients Code -->
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -22,54 +19,55 @@
       rel="stylesheet"
     />
 
-    <link rel="icon" href="/css/login/images/icons/home.ico" type="image/x-icon">
-
+    <link
+      rel="icon"
+      href="/css/login/images/icons/home.ico"
+      type="image/x-icon"
+    />
   </head>
 
-  
   <body>
-
     <%- include('./partials/_header') %> <%- include('partials/_navbar') %>
-<div class="block-31" style="position: relative">
-  <div class="owl-carousel loop-block-31">
-    <div
-      class="block-30 block-30-sm item"
-      style="background-image: url('images/indexbg.jpeg')"
-      data-stellar-background-ratio="0.5"
-    >
-      <div class="container">
-        <div class="row align-items-center justify-content-center text-center">
-          <div class="col-md-7">
-            <h2 class="heading mb-5">
-              SMA CONNECT
-            </h2>
-            <p style="display: inline-block">
-              <a
-                href="https://www.youtube.com/watch?v=0h5fBdQJfTo&pp=ygULc21hIHBhdGllbnQ%3D"
-                data-fancybox
-                class="ftco-play-video d-flex"
-                ><span class="play-icon-wrap align-self-center mr-4"
-                  ><span class="ion-ios-play"></span
-                ></span>
-                <span class="align-self-center">What is SMA?</span></a
-              >
-            </p>
+    <div class="block-31" style="position: relative">
+      <div class="owl-carousel loop-block-31">
+        <div
+          class="block-30 block-30-sm item"
+          style="background-image: url('images/indexbg.jpeg')"
+          data-stellar-background-ratio="0.5"
+        >
+          <div class="container">
+            <div
+              class="row align-items-center justify-content-center text-center"
+            >
+              <div class="col-md-7">
+                <h2 class="heading mb-5">SMA CONNECT</h2>
+                <p style="display: inline-block">
+                  <a
+                    href="https://www.youtube.com/watch?v=0h5fBdQJfTo&pp=ygULc21hIHBhdGllbnQ%3D"
+                    data-fancybox
+                    class="ftco-play-video d-flex"
+                    ><span class="play-icon-wrap align-self-center mr-4"
+                      ><span class="ion-ios-play"></span
+                    ></span>
+                    <span class="align-self-center">What is SMA?</span></a
+                  >
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
     <div class="page d-flex">
       <div class="content w-full">
         <!-- Start Head -->
-        <div class="head bg-white p-15 between-flex">
-          
-        </div>
+        <div class="head bg-white p-15 between-flex"></div>
         <!-- End Head -->
         <h1 class="p-relative">Patients</h1>
         <div class="friends-page d-grid m-20 gap-20">
+          <!--burasi-->
+          <% campaigns.forEach(campaign => {  %>
           <div class="friend bg-white rad-6 p-20 p-relative">
             <div class="txt-c">
               <img
@@ -78,40 +76,47 @@
                 src="feed/imgs/patient.jpg"
                 alt=""
               />
-              <h4 class="m-0">Patient 1</h4>
-              <p class="c-grey fs-13 mt-5 mb-0">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus animi at quibusdam distinctio quam officiis laudantium, quas nulla, illo ducimus eum molestias culpa esse aperiam, hic nesciunt accusantium modi doloremque?
-              </p>
+              <h4 class="m-0">
+                <%= campaign.user.firstName + " " + campaign.user.lastName %>
+              </h4>
+              <p class="c-grey fs-13 mt-5 mb-0"><%= campaign.description %></p>
             </div>
             <div class="icons fs-14 p-relative">
               <div class="mb-10">
                 <i class="fa-regular fa-face-smile fa-fw"></i>
-                <span>99 Donators</span>
+                <span><%= campaign.donators.length %> Donator</span>
               </div>
               <div>
                 <span>
                   <div class="progress-bg">
                     <div class="progress-bar">
-                      <h3 class="raised">50,000TL&nbsp;raised</h3>
+                      <h3 class="raised">
+                        <%= campaign.current %>&nbsp;raised
+                      </h3>
                     </div>
 
-                    <h3 class="goal">Goal: 100,000TL</h3>
+                    <h3 class="goal">Goal: <%= campaign.need %></h3>
                   </div>
                 </span>
               </div>
             </div>
             <div class="info between-flex fs-13">
-              <span class="c-grey">Joined xx/xx/xxxx</span>
               <div>
-                <a class="bg-blue c-white btn-shape" href="feed-one.ejs"
-                  >Patient</a
+                <a
+                  class="bg-blue c-white btn-shape"
+                  href="/campaign/<%= campaign._id %>"
+                  >Details</a
                 >
-                <a class="bg-red c-white btn-shape" href="donation.ejs"
+                <a
+                  class="bg-red c-white btn-shape"
+                  href="/donation/<%= campaign._id %>"
                   >Donate</a
                 >
               </div>
             </div>
           </div>
+          <% }) %>
+          <!--burasi-->
           <div class="friend bg-white rad-6 p-20 p-relative">
             <div class="txt-c">
               <img
@@ -122,7 +127,10 @@
               />
               <h4 class="m-0">Patient 2</h4>
               <p class="c-grey fs-13 mt-5 mb-0">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, quasi natus neque rem eveniet, minima corrupti ut consequatur magni asperiores eum eos quam unde, modi id reiciendis fugiat! Sunt, quisquam!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Molestias, quasi natus neque rem eveniet, minima corrupti ut
+                consequatur magni asperiores eum eos quam unde, modi id
+                reiciendis fugiat! Sunt, quisquam!
               </p>
             </div>
             <div class="icons fs-14 p-relative">
@@ -160,7 +168,10 @@
               />
               <h4 class="m-0">Patient 3</h4>
               <p class="c-grey fs-13 mt-5 mb-0">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis deleniti aliquid cumque at reiciendis esse necessitatibus officia vitae voluptas aperiam minus quo aut cupiditate nesciunt, perferendis maiores numquam porro alias?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Veritatis deleniti aliquid cumque at reiciendis esse
+                necessitatibus officia vitae voluptas aperiam minus quo aut
+                cupiditate nesciunt, perferendis maiores numquam porro alias?
               </p>
             </div>
             <div class="icons fs-14 p-relative">
@@ -198,7 +209,10 @@
               />
               <h4 class="m-0">Patient 4</h4>
               <p class="c-grey fs-13 mt-5 mb-0">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non tempora qui facere saepe, rerum aut magnam dolor nihil, optio alias error nesciunt sequi quidem nulla voluptatem ipsam recusandae delectus quaerat!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non
+                tempora qui facere saepe, rerum aut magnam dolor nihil, optio
+                alias error nesciunt sequi quidem nulla voluptatem ipsam
+                recusandae delectus quaerat!
               </p>
             </div>
             <div class="icons fs-14 p-relative">
@@ -236,7 +250,10 @@
               />
               <h4 class="m-0">Patient 5</h4>
               <p class="c-grey fs-13 mt-5 mb-0">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio et hic quo exercitationem perferendis quaerat dolorum quisquam inventore earum est maxime accusantium eveniet obcaecati tempora temporibus eum, nam alias placeat.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Distinctio et hic quo exercitationem perferendis quaerat dolorum
+                quisquam inventore earum est maxime accusantium eveniet
+                obcaecati tempora temporibus eum, nam alias placeat.
               </p>
             </div>
             <div class="icons fs-14 p-relative">
@@ -274,7 +291,10 @@
               />
               <h4 class="m-0">Patient 6</h4>
               <p class="c-grey fs-13 mt-5 mb-0">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga obcaecati fugit aperiam magni quae numquam necessitatibus delectus harum commodi! Harum illum maxime necessitatibus sit consequuntur adipisci sint sapiente corporis modi?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga
+                obcaecati fugit aperiam magni quae numquam necessitatibus
+                delectus harum commodi! Harum illum maxime necessitatibus sit
+                consequuntur adipisci sint sapiente corporis modi?
               </p>
             </div>
             <div class="icons fs-14 p-relative">
@@ -312,7 +332,10 @@
               />
               <h4 class="m-0">Patient 7</h4>
               <p class="c-grey fs-13 mt-5 mb-0">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa earum sit dolor est maxime eum odio, temporibus numquam iure, minus quam esse aperiam illo debitis doloribus nulla similique ipsa libero.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
+                earum sit dolor est maxime eum odio, temporibus numquam iure,
+                minus quam esse aperiam illo debitis doloribus nulla similique
+                ipsa libero.
               </p>
             </div>
             <div class="icons fs-14 p-relative">
@@ -350,7 +373,10 @@
               />
               <h4 class="m-0">Patient 8</h4>
               <p class="c-grey fs-13 mt-5 mb-0">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae omnis doloribus ullam saepe earum eaque minima natus laudantium porro accusantium a, perferendis, sunt, odio blanditiis distinctio impedit delectus tenetur consequuntur!
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Repudiandae omnis doloribus ullam saepe earum eaque minima natus
+                laudantium porro accusantium a, perferendis, sunt, odio
+                blanditiis distinctio impedit delectus tenetur consequuntur!
               </p>
             </div>
             <div class="icons fs-14 p-relative">
@@ -388,7 +414,10 @@
               />
               <h4 class="m-0">Patient 9</h4>
               <p class="c-grey fs-13 mt-5 mb-0">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero dolorum aliquid, repellat magni, deleniti repudiandae nam nobis rem animi architecto molestiae quisquam enim nulla voluptate minima maxime officia veritatis reiciendis.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero
+                dolorum aliquid, repellat magni, deleniti repudiandae nam nobis
+                rem animi architecto molestiae quisquam enim nulla voluptate
+                minima maxime officia veritatis reiciendis.
               </p>
             </div>
             <div class="icons fs-14 p-relative">
@@ -426,7 +455,10 @@
               />
               <h4 class="m-0">Patient 10</h4>
               <p class="c-grey fs-13 mt-5 mb-0">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt similique dicta voluptatibus ea, unde numquam. Amet quidem, numquam ullam cumque possimus maiores quod ipsa tempora veniam deserunt distinctio optio error.
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Deserunt similique dicta voluptatibus ea, unde numquam. Amet
+                quidem, numquam ullam cumque possimus maiores quod ipsa tempora
+                veniam deserunt distinctio optio error.
               </p>
             </div>
             <div class="icons fs-14 p-relative">
@@ -459,9 +491,6 @@
     </div>
   </body>
 </html>
-
-
-
 
 <!-- .section -->
 
@@ -569,12 +598,9 @@
 </div>
 <!-- .section -->
 
-
 <!-- .featured-donate -->
 
-
 <!-- .section -->
-
 
 <!-- .featured-donate -->
 

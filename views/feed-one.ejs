@@ -11,47 +11,40 @@
 
       <div class="user-details">
         <label for="name">Name:</label>
-        <p id="name">Patient Name</p>
+        <p id="name"><%= campaign.user.firstName %></p>
       </div>
 
       <div class="user-details">
         <label for="surname">Surname:</label>
-        <p id="surname">Patient Surname</p>
-      </div>
-
-      <div class="user-details">
-        <label for="birthdate">Birthdate:</label>
-        <p id="birthdate">xx/xx/xxxx</p>
+        <p id="surname"><%= campaign.user.lastName %></p>
       </div>
 
       <div class="user-details">
         <label for="donations">Collected Donations:</label>
-        <p id="donations">50,000TL</p>
+        <p id="donations"><%= campaign.need %></p>
       </div>
 
       <div class="user-details">
-        <label for="phone">Phone:</label>
-        <p id="phone">(xxx)xxxxxxx</p>
+        <label for="phone">Phone Number</label>
+        <p id="phone"><%= campaign.user.phoneNumber %></p>
       </div>
 
       <div class="user-details">
         <label for="email">Email:</label>
-        <p id="email">xxxxxxxx@example.com</p>
+        <p id="email"><%= campaign.user.email %></p>
       </div>
 
       <div class="user-details">
         <label for="bio">Bio:</label>
         <p id="bio">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
-          risus eget sapien efficitur malesuada. Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Nulla et risus eget sapien efficitur
-          malesuada. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          
+          <% campaign.description %>
         </p>
       </div>
 
       <div class="buttons-container">
-        <a href="index.ejs" class="button blue-btn">Home</a>
-        <a href="donation.ejs" class="button green-btn">Donate</a>
+        <a href="/" class="button blue-btn">Home</a>
+        <a href="/donation/<%= campaign._id %>" class="button green-btn">Donate</a>
       </div>
       
     </div>

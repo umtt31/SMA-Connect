@@ -1,5 +1,13 @@
-exports.getHomePage = (req, res) => {
-  res.render("index.ejs");
+const campaignController = require("../controllers/campaignController");
+const patientController = require("../controllers/patientController");
+const Campaign = require("../models/Campaign");
+
+exports.getHomePage = async (req, res) => {
+  const campaigns = await Campaign.find({}).populate("user");
+  for (const x in campaigns) {
+    console.log(x.user);
+  }
+  res.render("index.ejs", { campaigns });
 };
 
 exports.getMainPage = (req, res) => {
