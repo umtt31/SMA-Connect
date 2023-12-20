@@ -67,6 +67,7 @@
         <h1 class="p-relative">Patients</h1>
         <div class="friends-page d-grid m-20 gap-20">
           <!--burasi-->
+          <% if (campaigns) { %>
           <% campaigns.forEach(campaign => {  %>
           <div class="friend bg-white rad-6 p-20 p-relative">
             <div class="txt-c">
@@ -116,6 +117,7 @@
             </div>
           </div>
           <% }) %>
+          <% } %>
           <!--burasi-->
           <div class="friend bg-white rad-6 p-20 p-relative">
             <div class="txt-c">

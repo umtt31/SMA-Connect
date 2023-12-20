@@ -5,9 +5,9 @@ const Schema = mongoose.Schema;
 const CampaignSchema = new Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   description: { type: String },
-  need: { type: Number, default: 86948400 },
+  need: { type: Number, default: 10000000 },
   current: { type: Number, default: 0 },
-  donators: [{ type: mongoose.Types.ObjectId, ref: 'Donator' }],
+  donators: [{ type: mongoose.Types.ObjectId, ref: "Donator" }],
   isApprovedByDoctor: { type: Boolean, default: false },
   isDone: { type: Boolean, default: false },
 });

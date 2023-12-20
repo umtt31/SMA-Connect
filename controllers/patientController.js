@@ -25,6 +25,14 @@ exports.getAllPatients = async (req, res) => {
   res.json(patients);
 };
 
+exports.getPatientProfile = (req, res) => {
+  res.render("patient-profile.ejs");
+};
+
+exports.getPatientDonation = (req, res) => {
+  res.render("patient-donation.ejs");
+};
+
 exports.findPatient = async (patientId) => {
   const patient = await Patient.findById(patientId);
   return patient;

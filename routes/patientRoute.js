@@ -4,7 +4,8 @@ const patientController = require("../controllers/patientController.js");
 
 const router = express.Router();
 
-router.route("").get(patientController.getAllPatients);
+router.route("").get(patientController.getPatientDonation);
+router.route("/profile").get(patientController.getPatientProfile);
 router.route("").post(patientController.createPatient);
 router.route("/createCampaign").post(patientController.createCampaign);
 
