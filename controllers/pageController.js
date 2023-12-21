@@ -1,13 +1,17 @@
 const campaignController = require("../controllers/campaignController");
 const patientController = require("../controllers/patientController");
 const Campaign = require("../models/Campaign");
+const User = require("../models/User");
 
 exports.getHomePage = async (req, res) => {
+  const currentUser = await User.findById(req.session.userID);
+  console.log(currentUser);
+
   const campaigns = await Campaign.find({}).populate("user");
   for (const x in campaigns) {
     console.log(x.user);
   }
-  res.render("index.ejs", { campaigns });
+  res.render("index.ejs", { campaigns, currentUser });
 };
 
 exports.getMainPage = (req, res) => {

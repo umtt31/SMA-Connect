@@ -1,20 +1,44 @@
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-      <a class="navbar-brand" href="/">SMA-Connect</a>
+      <a class="navbar-brand" href="/">GiveHope</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu"></span> Menu
       </button>
 
-      <div class="collapse navbar-collapse" id="ftco-nav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
-          <li class="nav-item"><a href="/how-it-works" class="nav-link">How It Works</a></li>
-          <li class="nav-item"><a href="/donate" class="nav-link">Donate</a></li>
-          <li class="nav-item"><a href="/gallery" class="nav-link">Gallery</a></li>
-          <li class="nav-item"><a href="/blog" class="nav-link">Blog</a></li>
-          <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
-        </ul>
-      </div>
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+        <li class="nav-item">
+          <a href="/how-it-works" class="nav-link">How It Works</a>
+        </li>
+        <li class="nav-item"><a href="/donate" class="nav-link">Donate</a></li>
+        <li class="nav-item">
+          <a href="/gallery" class="nav-link">Gallery</a>
+        </li>
+        <li class="nav-item"><a href="/blog" class="nav-link">Blog</a></li>
+        <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
+        <li class="nav-item">
+          <a href="/contact" class="nav-link">Contact</a>
+        </li>
+        <% if (userIn) { %> <% if( currentUser.role === "doctor") { %>
+        <li class="nav-item"><a href="/doctor" class="nav-link">Doctor</a></li>
+        <% } %> <% if( currentUser.role === "donator") { %>
+        <li class="nav-item">
+          <a href="/donator" class="nav-link">Donator</a>
+        </li>
+        <% } %> <% if( currentUser.role === "patient") { %>
+        <li class="nav-item">
+          <a href="/patient" class="nav-link">Patient</a>
+        </li>
+        <% } %> <% } %> <% if (!userIn) { %>
+        <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+        <li class="nav-item">
+          <a href="/register" class="nav-link">Register</a>
+        </li>
+        <% } else { %>
+        <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
+        <% } %>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
