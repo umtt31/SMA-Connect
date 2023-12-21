@@ -1525,10 +1525,10 @@ textarea.form-control {
       background: #fff; }
 
 .block-30 {
-  background-size: cover;
+  background-size:cover;
   background-color: #ccc;
   padding: 0;
-  position: relative; }
+  position: relative }
   @media (max-width: 991.98px) {
     .block-30 {
       background-position: center center !important; } }
