@@ -140,13 +140,13 @@
   color: var(--orange-color);
 }
 .bg-red {
-  background-color: forestgreen; /* Donate button */
+  background-color:forestgreen; /* Donate button */
 }
 .bg-green {
   background-color: var(--green-color);
 }
 .bg-blue {
-  background-color: var(--blue-color);
+  background-color: var(--blue-color); /* Details button */
 }
 .bg-orange {
   background-color: var(--orange-color);
@@ -244,7 +244,7 @@
 }
 .btn-shape {
   padding: 4px 10px;
-  border-radius: 6px;
+  border-radius: 3px;
 }
 /* End Components */
 
