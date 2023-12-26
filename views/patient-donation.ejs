@@ -15,7 +15,7 @@
     <link rel="icon" href="/css/login/images/icons/patient.ico" type="image/x-icon">
   </head>
   <body>
-    <!-- <%- include('partials/_navbar') %> -->
+     <%- include('partials/_navbar') %>
     <div class="page d-flex">
       <div class="sidebar bg-white p-20 p-relative">
         <h3 class="p-relative txt-c mt-0">Patient</h3>
@@ -97,17 +97,26 @@
           <!-- End Reminders Widget -->
           <!-- Start Latest Post Widget -->
           <div class="latest-post p-20 bg-white rad-10 p-relative">
-            <h2 class="mt-0 mb-25">Latest Post</h2>
+            <h2 class="mt-0 mb-25">Create Patient</h2>
             <div class="top d-flex align-center">
               <img decoding="async" class="avatar mr-15" src="css/patient-profile/imgs/avatar.png" alt="" />
               <div class="info">
-                <span class="d-block mb-5 fw-bold">Aghyad Mohammad</span>
-                <span class="c-grey">About 3 Hours Ago</span>
+                <span class="d-block mb-5 fw-bold"><%= user.firstName %> <%= user.lastName %></span>
               </div>
             </div>
             <div class="post-content txt-c-mobile pt-20 pb-20 mt-20 mb-20">
-              You can fool all of the people some of the time, and some of the people all of the time, but you can't
-              fool all of the people all of the time.
+              <% if (isAlreadyPatient === false) {%>
+              <form action="/patient" method="POST">
+                <label for="statement">Statement</label>
+                <input type="text" name="statement" id="statement">
+                <button type="submit">Submit</button>
+              </form>
+              <% } else {%>
+                <% if (patient.isApprovedByDoctor === true) {%>
+                <p>Approved by doctor</p>
+                <% } else { %>
+                   <p>waiting for to any doctors approvement</p>
+                   <% }} %>
             </div>
             <div class="post-stats between-flex c-grey">
               <div>
@@ -120,6 +129,30 @@
               </div>
             </div>
           </div>
+          <% if (patient.isApprovedByDoctor) { %>
+          <div class="latest-post p-20 bg-white rad-10 p-relative">
+            <h2 class="mt-0 mb-25">Create Campaign</h2>
+            <div class="top d-flex align-center">
+              <img decoding="async" class="avatar mr-15" src="css/patient-profile/imgs/avatar.png" alt="" />
+              <div class="info">
+                <span class="d-block mb-5 fw-bold"><%= user.firstName %> <%= user.lastName %></span>
+              </div>
+            </div>
+            <div class="post-content txt-c-mobile pt-20 pb-20 mt-20 mb-20">
+              
+            </div>
+            <div class="post-stats between-flex c-grey">
+              <div>
+                <i class="fa-regular fa-heart"></i>
+                <span>1.8K</span>
+              </div>
+              <div>
+                <i class="fa-regular fa-comments"></i>
+                <span>500</span>
+              </div>
+            </div>
+          </div>
+          <% } %>
           <!-- End Latest Post Widget -->
           <!-- Start Social Media Stats Widget -->
           <div class="social-media p-20 bg-white rad-10 p-relative">

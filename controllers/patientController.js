@@ -4,8 +4,11 @@ const User = require("../models/User");
 
 exports.createPatient = async (req, res) => {
   const patientId = req.session.userID;
-  const patient = await Patient.create({ _id: patientId });
-  return res.json(patient);
+  const patient = await Patient.create({
+    _id: patientId,
+    statement: req.body.statement,
+  });
+  res.redirect("/patient");
 };
 
 exports.createCampaign = async (req, res) => {
@@ -29,8 +32,16 @@ exports.getPatientProfile = (req, res) => {
   res.render("patient-profile.ejs");
 };
 
-exports.getPatientDonation = (req, res) => {
-  res.render("patient-donation.ejs");
+exports.getPatientDonation = async (req, res) => {
+  const user = await User.findById(req.session.userID);
+  try {
+    const patient = await Patient.findById(req.session.userID);
+    if (patient) {
+      res.render("patient-donation.ejs", { user, isAlreadyPatient: true, patient });
+    }
+  } catch (error) {
+    res.render("patient-donation.ejs", { user, isAlreadyPatient: false });
+  }
 };
 
 exports.findPatient = async (patientId) => {

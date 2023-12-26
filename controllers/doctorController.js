@@ -9,20 +9,6 @@ exports.sendToApprovedWithFalse = async (req, res) => {
   return res.json(doctor);
 };
 
-exports.approveCampaign = async (req, res) => {
-  const campaign = await Campaign.findById(req.params.campaignId);
-  campaign.isApprovedByDoctor = true;
-  campaign.save();
-  res.json("approved");
-};
-
-exports.approvePatient = async (req, res) => {
-  const patient = await Patient.findById(req.params.patientId);
-  patient.isApprovedByDoctor = true;
-  patient.save();
-  res.json("approved");
-};
-
 exports.getDashboardPage = (req, res) => {
   res.render("doctor.ejs");
 };
@@ -31,6 +17,40 @@ exports.getProfilePage = (req, res) => {
   res.render("profile.ejs");
 };
 
-exports.getPatientPage = (req, res) => {
-  res.render("patients.ejs");
+exports.getPatientPage = async (req, res) => {
+  try {
+    const patientsNotApproved = await Patient.find({
+      isApprovedByDoctor: false,
+    }).populate("user");
+    console.log(patientsNotApproved);
+    res.render("patients.ejs", { patientsNotApproved });
+  } catch (err) {
+    res.render("patients.ejs");
+  }
+};
+
+exports.removePatient = async (req, res) => {
+  const patient = await Patient.findByIdAndDelete(req.params.patientId);
+  patient.save();
+  res.redirect("/doctor/patients");
+};
+
+exports.approvePatient = async (req, res) => {
+  const patient = await Patient.findById(req.params.patientId);
+  patient.isApprovedByDoctor = true;
+  patient.save();
+  res.redirect("/doctor/patients");
+};
+
+exports.approveCampaign = async (req, res) => {
+  const campaign = await Campaign.findById(req.params.campaignId);
+  campaign.isApprovedByDoctor = true;
+  campaign.save();
+  res.redirect("/doctor/campaigns");
+};
+
+exports.removeCampaign = async (req, res) => {
+  const campaign = await Campaign.findByIdAndDelete(req.params.campaignId);
+  campaign.save();
+  res.redirect("/doctor/campaigns");
 };

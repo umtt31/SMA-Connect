@@ -6,9 +6,12 @@ const router = express.Router();
 
 router.route("").get(doctorController.getDashboardPage)
 router.route("").post(doctorController.sendToApprovedWithFalse);
-router.route("/campaign/:campaignId").post(doctorController.approveCampaign);
-router.route("/patient/:patientId").post(doctorController.approvePatient);
 router.route('/patients').get(doctorController.getPatientPage)
 router.route('/profile').get(doctorController.getProfilePage)
+router.route('/patient/approve/:patientId').post(doctorController.approvePatient)
+router.route('/patient/remove/:patientId').post(doctorController.removePatient)
+router.route('/campaign/approve/:campaignId').post(doctorController.approveCampaign)
+router.route('/campaign/remove/:campaignId').post(doctorController.removeCampaign)
+
 
 module.exports = router;

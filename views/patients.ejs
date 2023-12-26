@@ -68,6 +68,9 @@
               <i class="fa-solid fa-phone"></i>
               <i class="fa-regular fa-envelope"></i>
             </div>
+            <!--burasi-->
+            <% try { %>
+            <% for(let patient of patientsNotApproved) { %>
             <div class="txt-c">
               <img
                 decoding="async"
@@ -75,31 +78,26 @@
                 src="/css/doctor-profile/imgs/friend-01.jpg"
                 alt=""
               />
-              <h4 class="m-0">Ahmed Mohamed</h4>
+              <h4 class="m-0"><%= patient._id.firstName %> <%= patient._id.lastName %></h4>
               <p class="c-grey fs-13 mt-5 mb-0">JavaScript Developer</p>
             </div>
             <div class="icons fs-14 p-relative">
               <div class="mb-10">
-                <i class="fa-regular fa-face-smile fa-fw"></i>
-                <span>99 Friend</span>
+                <p><%= patient.statement %></p>
               </div>
-              <div class="mb-10">
-                <i class="fa-solid fa-code-commit fa-fw"></i>
-                <span>15 Projects</span>
-              </div>
-              <div>
-                <i class="fa-regular fa-newspaper fa-fw"></i>
-                <span>25 Articles</span>
-              </div>
-              <span class="vip fw-bold c-orange">VIP</span>
             </div>
             <div class="info between-flex fs-13">
-              <span class="c-grey">Joined 02/10/2021</span>
+              <span class="c-grey">Joined <%= patient._id.registerDate %></span>
               <div>
-                <a class="bg-blue c-white btn-shape" href="/doctor/profile"
+                <a class="bg-blue c-white btn-shape" href="/" 
                   >Profile</a
-                >
-                <a class="bg-red c-white btn-shape" href="#">Remove</a>
+                > <!--hasta profiline gidicek-->
+                <form action="/doctor/patient/remove/<%= patient._id %>" method="POST">
+                <button type="submit" class="bg-red c-white btn-shape">Remove</button>
+              </form>
+              <form action="/doctor/patient/approve/<%= patient._id %>" method="POST">
+                <button type="submit" class="bg-green c-white btn-shape">Approve</button>
+              </form>
               </div>
             </div>
           </div>
@@ -108,6 +106,9 @@
               <i class="fa-solid fa-phone"></i>
               <i class="fa-regular fa-envelope"></i>
             </div>
+            <% } } catch (err) {}%>
+            <!--burasi-->
+
             <div class="txt-c">
               <img
                 decoding="async"
