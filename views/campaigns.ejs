@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Patients</title>
+    <title>Campaigns</title>
     <link rel="stylesheet" href="/css/doctor-profile/css/all.min.css" />
     <link rel="stylesheet" href="/css/doctor-profile/css/framework.css" />
     <link rel="stylesheet" href="/css/doctor-profile/css/master.css" />
@@ -46,7 +46,7 @@
           </li>
           <li>
             <a
-              class="active d-flex align-center fs-14 c-black rad-6 p-10"
+              class="d-flex align-center fs-14 c-black rad-6 p-10"
               href="/doctor/patients"
             >
               <i class="fa-regular fa-circle-user fa-fw"></i>
@@ -55,7 +55,7 @@
           </li>
           <li>
             <a
-              class="d-flex align-center fs-14 c-black rad-6 p-10"
+              class="active d-flex align-center fs-14 c-black rad-6 p-10"
               href="/doctor/campaigns"
             >
               <i class="fa-regular fa-circle-user fa-fw"></i>
@@ -70,11 +70,10 @@
         </ul>
       </div>
       <div class="content w-full">
-        
         <!--burasi-->
-        <% if (patientsNotApproved.length > 0) { %> 
-          <% for(let patient of patientsNotApproved) { %>
-            <h1 class="p-relative">Patients</h1>
+        <% if (campaignsNotApproved.length > 0) { %> 
+          <% for(let campaign of campaignsNotApproved) { %>
+            <h1 class="p-relative">campaigns</h1>
         <div class="friends-page d-grid m-20 gap-20">
           <div class="friend bg-white rad-6 p-20 p-relative">
             
@@ -87,22 +86,22 @@
                 alt=""
               />
               <h4 class="m-0">
-                <%= patient._id.firstName %> <%= patient._id.lastName %>
+                <%= campaign.user.firstName %> <%= campaign.user.lastName %>
               </h4>
               <p class="c-grey fs-13 mt-5 mb-0">JavaScript Developer</p>
             </div>
             <div class="icons fs-14 p-relative">
               <div class="mb-10">
-                <p><%= patient.statement %></p>
+                <p><%= campaign.description %></p>
+                <p><%= campaign.need %></p>
               </div>
             </div>
             <div class="info between-flex fs-13">
-              <span class="c-grey">Joined <%= patient._id.registerDate %></span>
               <div>
                 <a class="bg-blue c-white btn-shape" href="/">Profile</a>
                 <!--hasta profiline gidicek-->
                 <form
-                  action="/doctor/patient/remove/<%= patient._id._id %>"
+                  action="/doctor/campaign/remove/<%= campaign._id %>"
                   method="POST"
                 >
                   <button type="submit" class="bg-red c-white btn-shape">
@@ -110,7 +109,7 @@
                   </button>
                 </form>
                 <form
-                  action="/doctor/patient/approve/<%= patient._id._id %>"
+                  action="/doctor/campaign/approve/<%= campaign._id %>"
                   method="POST"
                 >
                   <button type="submit" class="bg-green c-white btn-shape">
@@ -120,20 +119,10 @@
               </div>
             </div>
           </div>
-            <% }} else if (patientsNotApproved.length === 0) { %>
-              <h1 class="p-relative">no patient to approve</h1>
+            <% }} else if (campaignsNotApproved.length === 0) { %>
+              <h1 class="p-relative">no campaign to approve</h1>
               <% } %>
             <!--burasi-->
-
-            
-            
-            
-          
-                
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </body>

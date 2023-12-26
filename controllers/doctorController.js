@@ -18,15 +18,18 @@ exports.getProfilePage = (req, res) => {
 };
 
 exports.getPatientPage = async (req, res) => {
-  try {
-    const patientsNotApproved = await Patient.find({
-      isApprovedByDoctor: false,
-    }).populate("user");
-    console.log(patientsNotApproved);
-    res.render("patients.ejs", { patientsNotApproved });
-  } catch (err) {
-    res.render("patients.ejs");
-  }
+  const patientsNotApproved = await Patient.find({
+    isApprovedByDoctor: false,
+  }).populate("_id");
+  res.render("patients.ejs", { patientsNotApproved });
+};
+
+exports.getCampaignPage = async (req, res) => {
+  const campaignsNotApproved = await Campaign.find({
+    isApprovedByDoctor: false,
+  }).populate("user");
+  console.log(campaignsNotApproved)
+  res.render("Campaigns.ejs", { campaignsNotApproved });
 };
 
 exports.removePatient = async (req, res) => {

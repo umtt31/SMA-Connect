@@ -10,24 +10,37 @@
     <link rel="stylesheet" href="css/patient-profile/css/master.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&#038;display=swap" rel="stylesheet" />
-    
-    <link rel="icon" href="/css/login/images/icons/patient.ico" type="image/x-icon">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&#038;display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="icon"
+      href="/css/login/images/icons/patient.ico"
+      type="image/x-icon"
+    />
   </head>
   <body>
-     <%- include('partials/_navbar') %>
+    <%- include('partials/_navbar') %>
     <div class="page d-flex">
       <div class="sidebar bg-white p-20 p-relative">
         <h3 class="p-relative txt-c mt-0">Patient</h3>
         <ul>
           <li>
-            <a class="active d-flex align-center fs-14 c-black rad-6 p-10" href="/patient">
+            <a
+              class="active d-flex align-center fs-14 c-black rad-6 p-10"
+              href="/patient"
+            >
               <i class="fa-regular fa-chart-bar fa-fw"></i>
               <span>Dashboard</span>
             </a>
           </li>
           <li>
-            <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="/patient/profile">
+            <a
+              class="d-flex align-center fs-14 c-black rad-6 p-10"
+              href="/patient/profile"
+            >
               <i class="fa-regular fa-user fa-fw"></i>
               <span>Profile</span>
             </a>
@@ -44,7 +57,11 @@
             <span class="notification p-relative">
               <i class="fa-regular fa-bell fa-lg"></i>
             </span>
-            <img decoding="async" src="css/patient-profile/imgs/avatar.png" alt="" />
+            <img
+              decoding="async"
+              src="css/patient-profile/imgs/avatar.png"
+              alt=""
+            />
           </div>
         </div>
         <!-- End Head -->
@@ -57,66 +74,100 @@
                 <h2 class="m-0">Welcome</h2>
                 <p class="c-grey mt-5">Patient</p>
               </div>
-              <img decoding="async" class="hide-mobile" src="css/patient-profile/imgs/welcome.png" alt="" />
+              <img
+                decoding="async"
+                class="hide-mobile"
+                src="css/patient-profile/imgs/welcome.png"
+                alt=""
+              />
             </div>
-            <img decoding="async" src="css/patient-profile/imgs/avatar.png" alt="" class="avatar" />
+            <img
+              decoding="async"
+              src="css/patient-profile/imgs/avatar.png"
+              alt=""
+              class="avatar"
+            />
             <div class="body txt-c d-flex p-20 mt-20 mb-20 block-mobile">
-              <div>ikbal demirci<span class="d-block c-grey fs-14 mt-10">Patient</span></div>
+              <div>
+                <%= user.firstName %> <%= user.lastName %><span
+                  class="d-block c-grey fs-14 mt-10"
+                  >Patient</span
+                >
+              </div>
               <!-- <div>80 <span class="d-block c-grey fs-14 mt-10">Projects</span></div> -->
-              <div>$8500 <span class="d-block c-grey fs-14 mt-10">Earned</span></div>
+              <% if (campaign.length > 0 && campaign[0].isApprovedByDoctor === true) {
+              %>
+              <div>
+                <%= campaign[0].current %> TL
+                <span class="d-block c-grey fs-14 mt-10">Collected</span>
+              </div>
+              <% } else { %>
+              <p>crerate a campaign or wait for approvement</p>
+              <% } %>
             </div>
-            <a href="/patient-donation/patient-profile" class="visit d-block fs-14 bg-blue c-white w-fit btn-shape">Profile</a>
+            <a
+              href="/patient-donation/patient-profile"
+              class="visit d-block fs-14 bg-blue c-white w-fit btn-shape"
+              >Profile</a
+            >
           </div>
           <!-- End Welcome Widget -->
           <!-- Start Quick Draft Widget -->
-          
+
           <!-- End Quick Draft Widget -->
           <!-- Start Targets Widget -->
-          
+
           <!-- End Targets Widget -->
           <!-- Start Ticket Widget -->
-          
+
           <!-- End Ticket Widget -->
           <!-- Start Latest News Widget -->
-          
+
           <!-- End Latest News Widget -->
           <!-- Start Tasks Widget -->
-          
+
           <!-- End Tasks -->
           <!-- Start Top Search Word Widget -->
-          
+
           <!-- End Top Search Word Widget -->
           <!-- Start Latest Uploads Widget -->
-          
+
           <!-- End Latest Uploads Widget -->
           <!-- Start Last Project Progress Widget -->
-          
+
           <!-- End Last Project Progress Widget -->
           <!-- Start Reminders Widget -->
-          
+
           <!-- End Reminders Widget -->
           <!-- Start Latest Post Widget -->
           <div class="latest-post p-20 bg-white rad-10 p-relative">
             <h2 class="mt-0 mb-25">Create Patient</h2>
             <div class="top d-flex align-center">
-              <img decoding="async" class="avatar mr-15" src="css/patient-profile/imgs/avatar.png" alt="" />
+              <img
+                decoding="async"
+                class="avatar mr-15"
+                src="css/patient-profile/imgs/avatar.png"
+                alt=""
+              />
               <div class="info">
-                <span class="d-block mb-5 fw-bold"><%= user.firstName %> <%= user.lastName %></span>
+                <span class="d-block mb-5 fw-bold"
+                  ><%= user.firstName %> <%= user.lastName %></span
+                >
               </div>
             </div>
             <div class="post-content txt-c-mobile pt-20 pb-20 mt-20 mb-20">
-              <% if (isAlreadyPatient === false) {%>
+              <% if (!patient) {%>
               <form action="/patient" method="POST">
                 <label for="statement">Statement</label>
-                <input type="text" name="statement" id="statement">
+                <input type="text" name="statement" id="statement" />
                 <button type="submit">Submit</button>
               </form>
-              <% } else {%>
-                <% if (patient.isApprovedByDoctor === true) {%>
-                <p>Approved by doctor</p>
-                <% } else { %>
-                   <p>waiting for to any doctors approvement</p>
-                   <% }} %>
+              <% } else {%> <% if (patient && patient.isApprovedByDoctor ===
+              true) {%>
+              <p>Approved by doctor</p>
+              <% } else { %>
+              <p>waiting for to any doctors approvement</p>
+              <% }} %>
             </div>
             <div class="post-stats between-flex c-grey">
               <div>
@@ -129,17 +180,41 @@
               </div>
             </div>
           </div>
-          <% if (patient.isApprovedByDoctor) { %>
+          <% if (patient && patient.isApprovedByDoctor) { %>
           <div class="latest-post p-20 bg-white rad-10 p-relative">
             <h2 class="mt-0 mb-25">Create Campaign</h2>
             <div class="top d-flex align-center">
-              <img decoding="async" class="avatar mr-15" src="css/patient-profile/imgs/avatar.png" alt="" />
+              <img
+                decoding="async"
+                class="avatar mr-15"
+                src="css/patient-profile/imgs/avatar.png"
+                alt=""
+              />
               <div class="info">
-                <span class="d-block mb-5 fw-bold"><%= user.firstName %> <%= user.lastName %></span>
+                <span class="d-block mb-5 fw-bold"
+                  ><%= user.firstName %> <%= user.lastName %></span>
               </div>
             </div>
             <div class="post-content txt-c-mobile pt-20 pb-20 mt-20 mb-20">
-              
+              <% if (campaign.length === 0) { %>
+              <form action="/patient/campaign/new" method="POST">
+                <label for="description">description</label>
+                <textarea
+                  name="description"
+                  id="description"
+                  cols="30"
+                  rows="10"
+                ></textarea>
+                <label for="need">need</label>
+                <input type="number" name="need" id="need" />
+                <button type="submit">Submit</button>
+              </form>
+              <% } if (campaign.length > 0) { %> <% if (campaign[0].isApprovedByDoctor ===
+              false) { %>
+              <p>wait for doctor approvment</p>
+              <% } else if (campaign[0].isApprovedByDoctor === true) {%>
+              <p>campaign Approved</p>
+              <%}} %>
             </div>
             <div class="post-stats between-flex c-grey">
               <div>
@@ -158,22 +233,30 @@
           <div class="social-media p-20 bg-white rad-10 p-relative">
             <h2 class="mt-0 mb-25">Social Media Stats</h2>
             <div class="box twitter p-15 p-relative mb-10 between-flex">
-              <i class="fa-brands fa-twitter fa-2x c-white h-full center-flex"></i>
+              <i
+                class="fa-brands fa-twitter fa-2x c-white h-full center-flex"
+              ></i>
               <span>90K Followers</span>
               <a class="fs-13 c-white btn-shape" href="#">Follow</a>
             </div>
             <div class="box facebook p-15 p-relative mb-10 between-flex">
-              <i class="fa-brands fa-facebook-f fa-2x c-white h-full center-flex"></i>
+              <i
+                class="fa-brands fa-facebook-f fa-2x c-white h-full center-flex"
+              ></i>
               <span>2M Like</span>
               <a class="fs-13 c-white btn-shape" href="#">Like</a>
             </div>
             <div class="box youtube p-15 p-relative mb-10 between-flex">
-              <i class="fa-brands fa-youtube fa-2x c-white h-full center-flex"></i>
+              <i
+                class="fa-brands fa-youtube fa-2x c-white h-full center-flex"
+              ></i>
               <span>1M Subs</span>
               <a class="fs-13 c-white btn-shape" href="#">Subscribe</a>
             </div>
             <div class="box linkedin p-15 p-relative mb-10 between-flex">
-              <i class="fa-brands fa-linkedin fa-2x c-white h-full center-flex"></i>
+              <i
+                class="fa-brands fa-linkedin fa-2x c-white h-full center-flex"
+              ></i>
               <span>70K Followers</span>
               <a class="fs-13 c-white btn-shape" href="#">Follow</a>
             </div>
@@ -181,7 +264,7 @@
           <!-- Start End Media Stats Widget -->
         </div>
         <!-- Start Projects Table -->
-        
+
         <!-- End Projects Table -->
       </div>
     </div>

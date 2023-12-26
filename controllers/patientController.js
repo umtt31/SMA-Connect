@@ -20,7 +20,8 @@ exports.createCampaign = async (req, res) => {
     user: req.session.userID,
     description: req.body.description,
   });
-  return res.json(campaign);
+  campaign.save();
+  res.redirect("/patient");
 };
 
 exports.getAllPatients = async (req, res) => {
@@ -34,14 +35,16 @@ exports.getPatientProfile = (req, res) => {
 
 exports.getPatientDonation = async (req, res) => {
   const user = await User.findById(req.session.userID);
-  try {
-    const patient = await Patient.findById(req.session.userID);
-    if (patient) {
-      res.render("patient-donation.ejs", { user, isAlreadyPatient: true, patient });
-    }
-  } catch (error) {
-    res.render("patient-donation.ejs", { user, isAlreadyPatient: false });
-  }
+  const patient = await Patient.findById(req.session.userID);
+  const campaign = await Campaign.find({ user: req.session.userID });
+
+  console.log(campaign.current)
+
+  res.render("patient-donation.ejs", {
+    user,
+    patient,
+    campaign,
+  });
 };
 
 exports.findPatient = async (patientId) => {

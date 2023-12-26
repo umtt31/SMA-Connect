@@ -32,13 +32,13 @@
           <a href="/contact" class="nav-link">Contact</a>
         </li>
         <% try { 
-          if (userIn) { %> <% if( currentUser.role === "doctor") { %>
+          if (userIn) { %> <% if( userIn.role === "doctor") { %>
             <li class="nav-item"><a href="/doctor" class="nav-link">Doctor</a></li>
-        <% } if( currentUser.role === "donator") { %>
+        <% } if( userIn.role === "donator") { %>
             <li class="nav-item">
               <a href="/donator" class="nav-link">Donator</a>
             </li>
-        <% } if( currentUser.role === "patient") { %>
+        <% } if( userIn.role === "patient") { %>
             <li class="nav-item">
               <a href="/patient" class="nav-link">Patient</a>
             </li>
