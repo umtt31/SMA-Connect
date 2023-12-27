@@ -108,11 +108,18 @@
                   href="/campaign/<%= campaign._id %>"
                   >Details</a
                 >
+                <% if (campaign.isDone === false) {%>
                 <a
                   class="bg-red c-white btn-shape"
                   href="/donation/<%= campaign._id %>"
                   >Donate</a
                 >
+                <% } else {%>
+                  <p
+                  class="bg-red c-white btn-shape"
+                  >Done</p
+                >
+                <% } %>
               </div>
             </div>
           </div>

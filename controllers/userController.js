@@ -1,6 +1,8 @@
 const bcyrpt = require("bcrypt");
 const User = require("../models/User");
 
+const Donator = require("../models/Donator");
+
 exports.getAllUsers = async (req, res) => {
   const users = await User.find({});
   return res.json(users);
@@ -8,6 +10,13 @@ exports.getAllUsers = async (req, res) => {
 
 exports.register = async (req, res) => {
   const user = await User.create(req.body);
+  const userId = user._id;
+  await user.save();
+  if (req.body.role === "donator") {
+    const donator = await Donator.create({ _id: userId, totalDonation: 0 });
+    await donator.save();
+    console.log(donator);
+  }
   return res.redirect("/");
 };
 
