@@ -10,7 +10,7 @@ router.route("/main").get(pageController.getMainPage);
 router.route("/about").get(pageController.getAboutPage);
 router.route("/blog").get(pageController.getBlogPage);
 router.route("/contact").get(pageController.getContactPage);
-router.route("/donation").get(pageController.getDonatePage);
+// router.route("/donation").get(pageController.getDonatePage);
 // router.route('/donation/:campaignId').get(pageController)
 router.route("/feed").get(pageController.getFeedPage);
 router.route("/gallery").get(pageController.getGalleryPage);

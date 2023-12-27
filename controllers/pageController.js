@@ -24,10 +24,6 @@ exports.getContactPage = (req, res) => {
   res.render("contact.ejs");
 };
 
-exports.getDonatePage = (req, res) => {
-  res.render("donation.ejs");
-};
-
 exports.getFeedPage = (req, res) => {
   res.render("feed-one.ejs");
 };

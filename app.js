@@ -11,6 +11,7 @@ const patientRoute = require("./routes/patientRoute.js");
 const donatorRoute = require("./routes/donatorRoute.js");
 const campaignRoute = require("./routes/campaignRoute.js");
 const adminRoute = require("./routes/adminRoute");
+const donationRoute = require("./routes/donationRoute.js");
 
 const app = express();
 
@@ -57,6 +58,7 @@ app.use("/donator", donatorRoute);
 app.use("/patient", patientRoute);
 app.use("/campaign", campaignRoute);
 app.use("/admin", adminRoute);
+app.use("/donation", donationRoute);
 
 app.listen(3000, () => {
   console.log(`Server running on port : 3000`);
