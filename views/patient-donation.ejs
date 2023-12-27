@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Patient Dashboard</title>
-    <link rel="stylesheet" href="css/patient-profile/css/all.min.css" />
-    <link rel="stylesheet" href="css/patient-profile/css/framework.css" />
-    <link rel="stylesheet" href="css/patient-profile/css/master.css" />
+    <link rel="stylesheet" href="/css/patient-profile/css/all.min.css" />
+    <link rel="stylesheet" href="/css/patient-profile/css/framework.css" />
+    <link rel="stylesheet" href="/css/patient-profile/css/master.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -22,7 +22,8 @@
     />
   </head>
   <body>
-    <%- include('partials/_navbar') %>
+    <!-- <%- include('partials/_navbar') %> -->
+    
     <div class="page d-flex">
       <div class="sidebar bg-white p-20 p-relative">
         <h3 class="p-relative txt-c mt-0">Patient</h3>
@@ -45,11 +46,23 @@
               <span>Profile</span>
             </a>
           </li>
+          <li>
+            <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="/">
+              <span>Home</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="/logout">
+              <span>Logout</span>
+            </a>
+          </li>
+
         </ul>
       </div>
       <div class="content w-full">
         <!-- Start Head -->
-        <div class="head bg-white p-15 between-flex">
+        <!-- <div class="head bg-white p-15 between-flex">
           <div class="search p-relative">
             <input class="p-10" type="search" placeholder="Type A Keyword" />
           </div>
@@ -63,7 +76,7 @@
               alt=""
             />
           </div>
-        </div>
+        </div> -->
         <!-- End Head -->
         <h1 class="p-relative">Dashboard</h1>
         <div class="wrapper d-grid gap-20">
@@ -146,7 +159,7 @@
               <img
                 decoding="async"
                 class="avatar mr-15"
-                src="css/patient-profile/imgs/avatar.png"
+                src="/css/patient-profile/imgs/avatar.png"
                 alt=""
               />
               <div class="info">
@@ -187,7 +200,7 @@
               <img
                 decoding="async"
                 class="avatar mr-15"
-                src="css/patient-profile/imgs/avatar.png"
+                src="/css/patient-profile/imgs/avatar.png"
                 alt=""
               />
               <div class="info">
