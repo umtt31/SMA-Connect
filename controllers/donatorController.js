@@ -1,5 +1,5 @@
 const Donator = require("../models/Donator");
-const Campaign = require("../models/Campaign");
+const Campaign = require('../models/Campaign')
 
 exports.getAllDonators = async (req, res) => {
   const donators = await Donator.find({});
@@ -28,3 +28,15 @@ exports.makeDonation = async (req, res) => {
     res.json("you cant make donation to campaign is already finished");
   }
 };
+
+// ikbal
+exports.getDashboardPage = async (req, res) => {
+  const donator = await Donator.findById(req.session.userID).populate('_id')
+  // const campaign = await Campaign.find({ user: req.session.userID });
+
+  console.log(donator)
+
+  res.render("donator-dashboard.ejs", {
+    donator
+  });
+}
