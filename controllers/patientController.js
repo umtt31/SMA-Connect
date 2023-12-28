@@ -33,6 +33,22 @@ exports.getPatientProfile = (req, res) => {
   res.render("patient-profile.ejs");
 };
 
+// ikbal yazdı doğru inş
+exports.getPatientProfile = async(req,res) => {
+  const user = await User.findById(req.session.userID);
+  const patient = await Patient.findById(req.session.userID);
+  const campaign = await Campaign.find({ user: req.session.userID });
+
+  console.log(campaign.current)
+
+  res.render("patient-profile.ejs", {
+    user,
+    patient,
+    campaign,
+  });
+}
+// buraya kadar
+
 exports.getPatientDonation = async (req, res) => {
   const user = await User.findById(req.session.userID);
   const patient = await Patient.findById(req.session.userID);
