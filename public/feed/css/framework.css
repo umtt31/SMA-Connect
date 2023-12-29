@@ -307,8 +307,7 @@ body {
 
 .progress-bg h3.raised {
   color: #fff;
-  margin: 2.1px 25px 0 50px;
-  padding: 0 25px 0 0;
+  text-align: center;
 }
 
 .progress-bg h3.goal {
