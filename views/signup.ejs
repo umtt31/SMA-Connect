@@ -43,14 +43,14 @@
 									<div class="col-md-12">
 										<div class="form-group d-flex align-items-center">
 					      			<label class="label"  for="firstName">First Name</label>
-					      			<input type="text" name="firstName" class="form-control" placeholder="First Name">
+					      			<input type="text" name="firstName" class="form-control" placeholder="First Name" required>
 					      		</div>
 
 								  <div class="row">
 									<div class="col-md-12">
 										<div class="form-group d-flex align-items-center">
 					      			<label class="label" for="lastName">Last Name</label>
-					      			<input type="text" name="lastName"  class="form-control" placeholder="Last Name">
+					      			<input type="text" name="lastName"  class="form-control" placeholder="Last Name" required>
 					      		</div>
 								
 
@@ -59,21 +59,21 @@
 									<div class="col-md-12">
 										<div class="form-group d-flex align-items-center">
 					      			<label class="label"  for="email">Email Address</label>
-					      			<input type="text" name="email" class="form-control" placeholder="Email">
+					      			<input type="text" name="email" class="form-control" placeholder="Email" required>
 					      		</div>
 
 									</div>
 									<div class="col-md-12">
 										<div class="form-group d-flex align-items-center">
 					      			<label class="label"  for="phoneNumber">Phone no.</label>
-					      			<input type="text" name="phoneNumber" class="form-control" placeholder="+90">
+					      			<input type="text" name="phoneNumber" class="form-control" placeholder="+90" required>
 					      		</div>
 
 							</div>
 							<div class="col-md-12">
 								<div class="form-group d-flex align-items-center">
 							  <label class="label"  for="TC">TC</label>
-							  <input type="text" name="TC" class="form-control" placeholder="TC">
+							  <input type="text" name="TC" class="form-control" placeholder="TC" required>
 						  </div>
 
 									</div>
@@ -81,7 +81,7 @@
 									<div class="col-md-12">
 										<div class="form-group d-flex align-items-center">
 				            	<label class="label" for="password">Password</label>
-				              <input type="password" name="password" class="form-control" placeholder="Password">
+				              <input type="password" name="password" class="form-control" placeholder="Password" required>
 				            </div>
 
 							<div class="row">
@@ -90,7 +90,7 @@
 
 									<label class="label" for="userType">User Type:</label>
 
-									<select name="role" id="users" class="form-control">
+									<select name="role" id="users" class="form-control" required>
   									<option value="doctor">Doctor</option>
 									<option value="patient">Patient</option>
 									<option value="donator">Donator</option>
@@ -103,7 +103,7 @@
 										<div class="form-group">
 				            	<div class="w-100">
 					            	<label class="checkbox-wrap checkbox-primary">I agree all statements in terms of service
-												  <input type="checkbox" checked>
+												  <input type="checkbox" required>
 												  <span class="checkmark"></span>
 												</label>
 											</div>
