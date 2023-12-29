@@ -1,4 +1,5 @@
 const bcyrpt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
 const Donator = require("../models/Donator");
@@ -20,6 +21,13 @@ exports.register = async (req, res) => {
   return res.redirect("/");
 };
 
+
+const createToken = (userId) => {
+  return jwt.sign({ userId }, process.env.JWT_SECRET, {
+    expiresIn: "1d",
+  });
+};
+
 exports.login = async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
@@ -28,7 +36,12 @@ exports.login = async (req, res) => {
       bcyrpt.compare(password, user.password, function (err, result) {
         if (result) {
           req.session.userID = user._id;
-          console.log(req.session.userID);
+
+          const token = createToken(user._id);
+          res.cookie('jwt', token, {
+            httpOnly: true,
+            maxAge: 1000 * 60 * 60 * 24,
+          });
 
           if (user.role === "donator") {
             res.redirect("/");
