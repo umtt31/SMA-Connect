@@ -4,8 +4,9 @@ const donatorController = require("../controllers/donatorController.js");
 
 const router = express.Router();
 
-router.route("").post(donatorController.createDonator);
-router.route("").get(donatorController.getAllDonators);
+// router.route("").post(donatorController.createDonator);
+// router.route("").get(donatorController.getDashboardPage);
+router.route("").get(donatorController.getDashboardPage);
 // router.route("/login").post(userController.login);
 // router.route("/:id").delete(userController.deleteUser);
 // router.route("/:id").put(userController.updateUser);

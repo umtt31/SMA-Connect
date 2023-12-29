@@ -51,7 +51,7 @@
             <div class="overview bg-white rad-10 d-flex align-center">
                 <div class="avatar-box txt-c p-20">
                     <img class="rad-half mb-10" src="/css/patient-profile/imgs/avatar.png" alt="">
-                    <h3 class="m-0">Aghyad Mohammad</h3>
+                    <h3 class="m-0"><%= user.firstName %> <%= user.lastName %></h3>
                     <p class="c-grey mt-10 ">Level 20</p>
                     <div class="level rad-6 bg-eee p-relative">
                         <span style="width: 70%"></span>
@@ -71,11 +71,11 @@
                       <h4 class="c-grey fs-15 m-0 w-full">General Information</h4>
                       <div class="fs-14">
                         <span class="c-grey">First Name: </span>
-                        <span>ikbal</span>
+                        <span><%= user.firstName %></span>
                       </div>
                       <div class="fs-14">
                         <span class="c-grey">Last Name: </span>
-                        <span>Male</span>
+                        <span> <%= user.lastName %> </span>
                       </div>
 
                       <!-- <div class="fs-14">
@@ -85,7 +85,7 @@
 
                       <div class="fs-14">
                         <span class="c-grey">TC: </span>
-                        <span>123456678901</span>
+                        <span><%= user.TC %></span>
                       </div>
 
                       <!-- <div class="fs-14">
@@ -101,15 +101,16 @@
                 <h4 class="c-grey w-full fs-15 m-0">Personal Information</h4>
                 <div class="fs-14">
                   <span class="c-grey">Email: </span>
-                  <span>ikbal.demirci@bilgiedu.net</span>
+                  <span><%= user.email %></span>
                 </div>
                 <div class="fs-14">
                   <span class="c-grey">Phone: </span>
-                  <span>1234567890</span>
+                  <span> <%= user.phoneNumber %> </span>
                 </div>
+                <!-- REGISTER DATE FULL RAKAM CIKTI NAPMALI -->
                 <div class="fs-14">
                   <span class="c-grey">Register Date: </span>
-                  <span>1/1/1992</span>
+                  <span> <%= user.registerDate %> </span>
                 </div>
                 <!-- <div class="fs-14">
                   <label>
@@ -121,19 +122,19 @@
               <!-- End Information Row -->
               <!-- Start Information Row -->
               <div class="box p-20 d-flex align-center">
-                <h4 class="c-grey w-full fs-15 m-0">Job Information</h4>
+                <h4 class="c-grey w-full fs-15 m-0">Other Information</h4>
                 <div class="fs-14">
                   <span class="c-grey">Title:</span>
-                  <span>Full Stack Developer</span>
+                  <span>SMA Patient</span>
                 </div>
                 <div class="fs-14">
-                  <span class="c-grey">Programming Language:</span>
-                  <span>Python</span>
+                  <span class="c-grey">Role: </span>
+                  <span> <%= user.role %> </span>
                 </div>
-                <div class="fs-14">
+                <!-- <div class="fs-14">
                   <span class="c-grey">Years Of Experience:</span>
                   <span>15+</span>
-                </div>
+                </div> -->
                 <!-- <div class="fs-14">
                   <label>
                     <input class="toggle-checkbox" type="checkbox" checked />

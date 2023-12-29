@@ -1,6 +1,8 @@
 const Campaign = require("../models/Campaign");
 const Doctor = require("../models/Doctor");
 const Patient = require("../models/Patient");
+// ikbal
+const User = require("../models/User");
 
 exports.sendToApprovedWithFalse = async (req, res) => {
   const doctorID = req.session.userID;
@@ -9,13 +11,13 @@ exports.sendToApprovedWithFalse = async (req, res) => {
   return res.json(doctor);
 };
 
-exports.getDashboardPage = (req, res) => {
+/* exports.getDashboardPage = (req, res) => {
   res.render("doctor.ejs");
 };
 
 exports.getProfilePage = (req, res) => {
   res.render("profile.ejs");
-};
+}; */
 
 exports.getPatientPage = async (req, res) => {
   const patientsNotApproved = await Patient.find({
@@ -57,3 +59,36 @@ exports.removeCampaign = async (req, res) => {
   campaign.save();
   res.redirect("/doctor/campaigns");
 };
+
+// ikbal
+exports.getDashboardPage = async(req, res) => {
+  const user = await User.findById(req.session.userID);
+  const doctor = await Doctor.findById(req.session.userID);
+  const patient = await Patient.findById(req.session.userID);
+  const campaign = await Campaign.find({ user: req.session.userID });
+
+  console.log(campaign.current)
+
+  res.render("doctor.ejs", {
+    user,
+    patient,
+    campaign,
+    doctor,
+  });
+}
+
+exports.getProfilePage = async(req, res) => {
+  const user = await User.findById(req.session.userID);
+  const doctor = await Doctor.findById(req.session.userID);
+  const patient = await Patient.findById(req.session.userID);
+  const campaign = await Campaign.find({ user: req.session.userID });
+
+  console.log(campaign.current)
+
+  res.render("profile.ejs", {
+    user,
+    patient,
+    campaign,
+    doctor,
+  });
+}

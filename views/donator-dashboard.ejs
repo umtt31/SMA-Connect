@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Doctor Dashboard</title>
+    <title>Donator Dashboard</title>
     <link rel="stylesheet" href="/css/doctor-profile/css/all.min.css" />
     <link rel="stylesheet" href="/css/doctor-profile/css/framework.css" />
     <link rel="stylesheet" href="/css/doctor-profile/css/master.css" />
@@ -17,25 +17,25 @@
 
     <link
       rel="icon"
-      href="/css/login/images/icons/doctor.ico"
+      href="/css/login/images/icons/donator.ico"
       type="image/x-icon"
     />
   </head>
   <body>
     <div class="page d-flex">
       <div class="sidebar bg-white p-20 p-relative">
-        <h3 class="p-relative txt-c mt-0">Doctor</h3>
+        <h3 class="p-relative txt-c mt-0">Donator</h3>
         <ul>
           <li>
             <a
               class="active d-flex align-center fs-14 c-black rad-6 p-10"
-              href="/doctor"
+              href="/donator"
             >
               <i class="fa-regular fa-chart-bar fa-fw"></i>
-              <span>Doctor Dashboard</span>
+              <span>Donator Dashboard</span>
             </a>
           </li>
-          <li>
+          <!-- <li>
             <a
               class="d-flex align-center fs-14 c-black rad-6 p-10"
               href="/doctor/profile"
@@ -43,8 +43,8 @@
               <i class="fa-regular fa-user fa-fw"></i>
               <span>Profile</span>
             </a>
-          </li>
-          <li>
+          </li> -->
+          <!-- <li>
             <a
               class="d-flex align-center fs-14 c-black rad-6 p-10"
               href="/doctor/patients"
@@ -52,8 +52,8 @@
               <i class="fa-regular fa-circle-user fa-fw"></i>
               <span>Patients</span>
             </a>
-          </li>
-          <li>
+          </li> -->
+          <!-- <li>
             <a
               class="d-flex align-center fs-14 c-black rad-6 p-10"
               href="/doctor/campaigns"
@@ -61,7 +61,7 @@
               <i class="fa-regular fa-circle-user fa-fw"></i>
               <span>campaigns</span>
             </a>
-          </li>
+          </li> -->
           <li>
             <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="/">
               <span>Home</span>
@@ -75,44 +75,39 @@
         </ul>
       </div>
       <div class="content w-full">
-        <h1 class="p-relative">Doctor Dashboard</h1>
+        <h1 class="p-relative">Donator Dashboard</h1>
         <div class="wrapper d-grid gap-20">
           <!-- Start Welcome Widget -->
           <div class="welcome bg-white rad-10 txt-c-mobile block-mobile">
             <div class="intro p-20 d-flex space-between bg-eee">
               <div>
                 <h2 class="m-0">Welcome</h2>
-                <p class="c-grey mt-5">Doctor</p>
+                <p class="c-grey mt-5">Donator</p>
               </div>
               <img
                 decoding="async"
                 class="hide-mobile"
-                src="css/doctor-profile/imgs/welcome.png"
+                src="/css/doctor-profile/imgs/welcome.png"
                 alt=""
               />
             </div>
             <img
               decoding="async"
-              src="css/doctor-profile/imgs/doctor (1).png"
+              src="/css/login/images/icons/donator.ico"
               alt=""
               class="avatar"
             />
             <div class="body txt-c d-flex p-20 mt-20 mb-20 block-mobile">
-              <div>
-                <%= user.firstName %> <%= user.lastName %><span class="d-block c-grey fs-14 mt-10"
-                  >Doctor</span
+              <div>ikbal<span class="d-block c-grey fs-14 mt-10"
+                  >Donator</span
                 >
               </div>
               <div>
-                10 <span class="d-block c-grey fs-14 mt-10">Patients</span>
+                10<span class="d-block c-grey fs-14 mt-10">Donations</span>
               </div>
               <!-- <div>$8500 <span class="d-block c-grey fs-14 mt-10">Earned</span></div> -->
             </div>
-            <a
-              href="/doctor/profile"
-              class="visit d-block fs-14 bg-blue c-white w-fit btn-shape"
-              >Profile</a
-            >
+            
           </div>
           <!-- End Welcome Widget -->
           <!-- Start Quick Draft Widget -->
@@ -144,25 +139,26 @@
           <!-- End Reminders Widget -->
           <!-- Start Latest Post Widget -->
           <div class="latest-post p-20 bg-white rad-10 p-relative">
-            <h2 class="mt-0 mb-25">Latest Post</h2>
+            <h2 class="mt-0 mb-25">Donations</h2>
             <div class="top d-flex align-center">
               <img
                 decoding="async"
                 class="avatar mr-15"
-                src="css/doctor-profile/imgs/avatar.png"
+                src="/css/login/images/icons/donator.ico"
                 alt=""
               />
               <div class="info">
-                <span class="d-block mb-5 fw-bold"><%= user.firstName %> <%= user.lastName %></span>
-                <span class="c-grey">About 3 Hours Ago</span>
+                <span class="d-block mb-5 fw-bold">ikbal</span>
+                <span class="c-grey"></span>
               </div>
+        
+              
             </div>
             <div class="post-content txt-c-mobile pt-20 pb-20 mt-20 mb-20">
-              You can fool all of the people some of the time, and some of the
-              people all of the time, but you can't fool all of the people all
-              of the time.
+              <span class="c-grey">Total Donations:</span>
+                  <span>12345567889</span>
             </div>
-            <div class="post-stats between-flex c-grey">
+            <!-- <div class="post-stats between-flex c-grey">
               <div>
                 <i class="fa-regular fa-heart"></i>
                 <span>1.8K</span>
@@ -171,7 +167,7 @@
                 <i class="fa-regular fa-comments"></i>
                 <span>500</span>
               </div>
-            </div>
+            </div> -->
           </div>
           <!-- End Latest Post Widget -->
           <!-- Start Social Media Stats Widget -->
@@ -179,7 +175,7 @@
           <!-- Start End Media Stats Widget -->
         </div>
         <!-- Start Projects Table -->
-        <div class="projects p-20 bg-white rad-10 m-20">
+        <!-- <div class="projects p-20 bg-white rad-10 m-20">
           <h2 class="mt-0 mb-20">Projects</h2>
           <div class="responsive-table">
             <table class="fs-15 w-full">
@@ -202,22 +198,22 @@
                   <td>
                     <img
                       decoding="async"
-                      src="css/doctor-profile/imgs/team-01.png"
+                      src="/css/doctor-profile/imgs/team-01.png"
                       alt=""
                     />
                     <img
                       decoding="async"
-                      src="css/doctor-profile/imgs/team-02.png"
+                      src="/css/doctor-profile/imgs/team-02.png"
                       alt=""
                     />
                     <img
                       decoding="async"
-                      src="css/doctor-profile/imgs/team-03.png"
+                      src="/css/doctor-profile/imgs/team-03.png"
                       alt=""
                     />
                     <img
                       decoding="async"
-                      src="css/doctor-profile/imgs/team-05.png"
+                      src="/css/doctor-profile/imgs/team-05.png"
                       alt=""
                     />
                   </td>
@@ -235,17 +231,17 @@
                   <td>
                     <img
                       decoding="async"
-                      src="css/doctor-profile/imgs/team-01.png"
+                      src="/css/doctor-profile/imgs/team-01.png"
                       alt=""
                     />
                     <img
                       decoding="async"
-                      src="css/doctor-profile/imgs/team-02.png"
+                      src="/css/doctor-profile/imgs/team-02.png"
                       alt=""
                     />
                     <img
                       decoding="async"
-                      src="css/doctor-profile/imgs/team-05.png"
+                      src="/css/doctor-profile/imgs/team-05.png"
                       alt=""
                     />
                   </td>
@@ -263,12 +259,12 @@
                   <td>
                     <img
                       decoding="async"
-                      src="css/doctor-profile/imgs/team-02.png"
+                      src="/css/doctor-profile/imgs/team-02.png"
                       alt=""
                     />
                     <img
                       decoding="async"
-                      src="css/doctor-profile/imgs/team-03.png"
+                      src="/css/doctor-profile/imgs/team-03.png"
                       alt=""
                     />
                   </td>
@@ -286,12 +282,12 @@
                   <td>
                     <img
                       decoding="async"
-                      src="css/doctor-profile/imgs/team-01.png"
+                      src="/css/doctor-profile/imgs/team-01.png"
                       alt=""
                     />
                     <img
                       decoding="async"
-                      src="css/doctor-profile/imgs/team-02.png"
+                      src="/css/doctor-profile/imgs/team-02.png"
                       alt=""
                     />
                   </td>
@@ -309,12 +305,12 @@
                   <td>
                     <img
                       decoding="async"
-                      src="css/doctor-profile/imgs/team-01.png"
+                      src="/css/doctor-profile/imgs/team-01.png"
                       alt=""
                     />
                     <img
                       decoding="async"
-                      src="css/doctor-profile/imgs/team-03.png"
+                      src="/css/doctor-profile/imgs/team-03.png"
                       alt=""
                     />
                   </td>
@@ -330,22 +326,22 @@
                   <td>
                     <img
                       decoding="async"
-                      src="css/doctor-profile/imgs/team-01.png"
+                      src="/css/doctor-profile/imgs/team-01.png"
                       alt=""
                     />
                     <img
                       decoding="async"
-                      src="css/doctor-profile/imgs/team-02.png"
+                      src="/css/doctor-profile/imgs/team-02.png"
                       alt=""
                     />
                     <img
                       decoding="async"
-                      src="css/doctor-profile/imgs/team-03.png"
+                      src="/css/doctor-profile/imgs/team-03.png"
                       alt=""
                     />
                     <img
                       decoding="async"
-                      src="css/doctor-profile/imgs/team-04.png"
+                      src="/css/doctor-profile/imgs/team-04.png"
                       alt=""
                     />
                   </td>
@@ -358,7 +354,7 @@
               </tbody>
             </table>
           </div>
-        </div>
+        </div> -->
         <!-- End Projects Table -->
       </div>
     </div>
