@@ -30,10 +30,10 @@ exports.checkIfDoctor = async (req, res, next) => {
     jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
       if (err) {
         console.log(err.message);
-        res.redirect('/login')
+        res.redirect("/login");
       } else {
         const user = await User.findById(decodedToken.userId);
-        if (user.role === 'doctor') {
+        if (user.role === "doctor") {
           res.locals.user = user;
           next();
         } else {
@@ -41,6 +41,8 @@ exports.checkIfDoctor = async (req, res, next) => {
         }
       }
     });
+  } else {
+    res.redirect("/login");
   }
 };
 
@@ -48,20 +50,24 @@ exports.checkIfDonator = async (req, res, next) => {
   const token = req.cookies.jwt;
 
   if (token) {
+    console.log("here");
     jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
       if (err) {
         console.log(err.message);
-        res.redirect('/login')
+        res.redirect("/login");
       } else {
         const user = await User.findById(decodedToken.userId);
-        if (user.role === 'donator') {
+        if (user.role === "donator") {
           res.locals.user = user;
+
           next();
         } else {
           res.redirect("/login");
         }
       }
     });
+  } else {
+    res.redirect("/login");
   }
 };
 
@@ -72,10 +78,10 @@ exports.checkIfPatient = async (req, res, next) => {
     jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
       if (err) {
         console.log(err.message);
-        res.redirect('/login')
+        res.redirect("/login");
       } else {
         const user = await User.findById(decodedToken.userId);
-        if (user.role === 'patient') {
+        if (user.role === "patient") {
           res.locals.user = user;
           next();
         } else {
@@ -83,5 +89,7 @@ exports.checkIfPatient = async (req, res, next) => {
         }
       }
     });
+  } else {
+    res.redirect("/login");
   }
 };

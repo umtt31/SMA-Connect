@@ -2,8 +2,8 @@ const Campaign = require("../models/Campaign");
 const Donator = require("../models/Donator");
 
 exports.donationCampaignid_get = async (req, res) => {
-  const campaignId = req.params.campaignId;
-  res.render("donation.ejs", { campaignId });
+  const campaign = await Campaign.findById(req.params.campaignId).populate('user')
+  res.render("donation.ejs", { campaign });
 };
 
 exports.donationCampaignid_post = async (req, res) => {
