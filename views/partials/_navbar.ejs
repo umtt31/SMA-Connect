@@ -23,25 +23,25 @@
         <li class="nav-item">
           <a href="/contact" class="nav-link">Contact</a>
         </li>
-        <% try { 
-          if (userIn) { %> <% if( userIn.role === "doctor") { %>
-            <li class="nav-item"><a href="/doctor" class="nav-link">Doctor</a></li>
-        <% } if( userIn.role === "donator") { %>
-            <li class="nav-item">
-              <a href="/donator" class="nav-link">Donator</a>
-            </li>
-        <% } if( userIn.role === "patient") { %>
-            <li class="nav-item">
-              <a href="/patient" class="nav-link">Patient</a>
-            </li>
-        <% }}  if (!userIn) { %>
-            <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
-            <li class="nav-item">
-              <a href="/register" class="nav-link">Register</a>
-            </li>
+        <% if(user) { %>
+          <% if (user.role === 'doctor') {%>
+        <li class="nav-item"><a href="/doctor" class="nav-link">Doctor</a></li>
+          <% } else if (user.role === 'donator') {%>
+        <li class="nav-item">
+          <a href="/donator" class="nav-link">Donator</a>
+        </li>
+        <% } else if (user.role === 'patient') {%>
+        <li class="nav-item">
+          <a href="/patient" class="nav-link">Patient</a>
+        </li>
+        <% } %>
+        <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
         <% } else { %>
-            <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
-        <% }} catch (error) { console.log(error) } %>
+        <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
+        <li class="nav-item">
+          <a href="/register" class="nav-link">Register</a>
+        </li>
+        <% } %>
       </ul>
     </div>
   </div>

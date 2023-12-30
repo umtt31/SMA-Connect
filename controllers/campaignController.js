@@ -1,11 +1,6 @@
 const Campaign = require("../models/Campaign");
 
-exports.getAllCampaigns = async () => {
-  const campaigns = await Campaign.find({}).populate("user");
-  return campaigns;
-};
-
-exports.getSingleCampaignPage = async (req, res) => {
+exports.campaignCampaignid_get = async (req, res) => {
   const campaign = await Campaign.findById(req.params.campaignId).populate(
     "user"
   );

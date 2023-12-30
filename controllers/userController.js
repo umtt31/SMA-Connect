@@ -4,23 +4,16 @@ const User = require("../models/User");
 
 const Donator = require("../models/Donator");
 
-exports.getAllUsers = async (req, res) => {
-  const users = await User.find({});
-  return res.json(users);
-};
-
-exports.register = async (req, res) => {
+exports.register_post = async (req, res) => {
   const user = await User.create(req.body);
   const userId = user._id;
   await user.save();
   if (req.body.role === "donator") {
     const donator = await Donator.create({ _id: userId, totalDonation: 0 });
     await donator.save();
-    console.log(donator);
   }
-  return res.redirect("/");
+  return res.redirect("/login");
 };
-
 
 const createToken = (userId) => {
   return jwt.sign({ userId }, process.env.JWT_SECRET, {
@@ -28,29 +21,25 @@ const createToken = (userId) => {
   });
 };
 
-exports.login = async (req, res) => {
+exports.login_post = async (req, res) => {
   const { email, password } = req.body;
-  const user = await User.findOne({ email });
   await User.findOne({ email }).then((user) => {
     if (user) {
       bcyrpt.compare(password, user.password, function (err, result) {
         if (result) {
           req.session.userID = user._id;
-
           const token = createToken(user._id);
-          res.cookie('jwt', token, {
+          res.cookie("jwt", token, {
             httpOnly: true,
             maxAge: 1000 * 60 * 60 * 24,
           });
 
           if (user.role === "donator") {
-            res.redirect("/");
+            res.redirect("/donator");
           } else if (user.role === "doctor") {
             res.redirect("/doctor");
           } else if (user.role === "patient") {
             res.redirect("/patient");
-          } else if (user.role === "admin") {
-            res.redirect("/");
           }
         } else {
           res.send("wrong password");
@@ -62,18 +51,15 @@ exports.login = async (req, res) => {
   });
 };
 
-exports.logout = (req, res) => {
-  req.session.destroy(() => {
-    res.status(200).redirect("/");
-  });
+exports.logout_get = (req, res) => {
+  res.cookie("jwt", "", { maxAge: 1 });
+  res.redirect("/");
 };
 
-exports.deleteUser = async (req, res) => {
-  await User.findByIdAndDelete(req.params._id);
-  res.send("user deleted");
+exports.login_get = (req, res) => {
+  res.render("login.ejs");
 };
 
-exports.updateUser = async (req, res) => {
-  const user = await User.findByIdAndUpdate(req.bod);
-  res.send("user updated");
+exports.register_get = (req, res) => {
+  res.render("signup.ejs");
 };

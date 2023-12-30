@@ -1,32 +1,23 @@
 const Campaign = require("../models/Campaign");
 const Doctor = require("../models/Doctor");
 const Patient = require("../models/Patient");
-// ikbal
 const User = require("../models/User");
 
 exports.sendToApprovedWithFalse = async (req, res) => {
-  const doctorID = req.session.userID;
+  const doctorID = res.locals.user._id;
   const doctorsBarcodeNumber = req.body;
   const doctor = await Doctor.create({ _id: doctorID, doctorsBarcodeNumber });
   return res.json(doctor);
 };
 
-/* exports.getDashboardPage = (req, res) => {
-  res.render("doctor.ejs");
-};
-
-exports.getProfilePage = (req, res) => {
-  res.render("profile.ejs");
-}; */
-
-exports.getPatientPage = async (req, res) => {
+exports.patients_get = async (req, res) => {
   const patientsNotApproved = await Patient.find({
     isApprovedByDoctor: false,
   }).populate("_id");
   res.render("patients.ejs", { patientsNotApproved });
 };
 
-exports.getCampaignPage = async (req, res) => {
+exports.campaigns_get = async (req, res) => {
   const campaignsNotApproved = await Campaign.find({
     isApprovedByDoctor: false,
   }).populate("user");
@@ -34,40 +25,38 @@ exports.getCampaignPage = async (req, res) => {
   res.render("Campaigns.ejs", { campaignsNotApproved });
 };
 
-exports.removePatient = async (req, res) => {
+exports.patientRemove_post = async (req, res) => {
   const patient = await Patient.findByIdAndDelete(req.params.patientId);
   patient.save();
   res.redirect("/doctor/patients");
 };
 
-exports.approvePatient = async (req, res) => {
+exports.patientApprove_post = async (req, res) => {
   const patient = await Patient.findById(req.params.patientId);
   patient.isApprovedByDoctor = true;
   patient.save();
   res.redirect("/doctor/patients");
 };
 
-exports.approveCampaign = async (req, res) => {
+exports.campaignApprove_post = async (req, res) => {
   const campaign = await Campaign.findById(req.params.campaignId);
   campaign.isApprovedByDoctor = true;
   campaign.save();
   res.redirect("/doctor/campaigns");
 };
 
-exports.removeCampaign = async (req, res) => {
+exports.campaignRemove_post = async (req, res) => {
   const campaign = await Campaign.findByIdAndDelete(req.params.campaignId);
   campaign.save();
   res.redirect("/doctor/campaigns");
 };
 
 // ikbal
-exports.getDashboardPage = async(req, res) => {
-  const user = await User.findById(req.session.userID);
-  const doctor = await Doctor.findById(req.session.userID);
-  const patient = await Patient.findById(req.session.userID);
-  const campaign = await Campaign.find({ user: req.session.userID });
-
-  console.log(campaign.current)
+exports.dashboard_get = async(req, res) => {
+  const user = await User.findById(res.locals.user._id);
+  const doctor = await Doctor.findById(res.locals.user._id);
+  const patient = await Patient.findById(res.locals.user._id);
+  const campaign = await Campaign.find({ user: res.locals.user._id });
 
   res.render("doctor.ejs", {
     user,
@@ -77,18 +66,6 @@ exports.getDashboardPage = async(req, res) => {
   });
 }
 
-exports.getProfilePage = async(req, res) => {
-  const user = await User.findById(req.session.userID);
-  const doctor = await Doctor.findById(req.session.userID);
-  const patient = await Patient.findById(req.session.userID);
-  const campaign = await Campaign.find({ user: req.session.userID });
-
-  console.log(campaign.current)
-
-  res.render("profile.ejs", {
-    user,
-    patient,
-    campaign,
-    doctor,
-  });
+exports.profile_get = async(req, res) => {
+  res.render("profile.ejs");
 }

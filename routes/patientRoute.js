@@ -1,18 +1,27 @@
 const express = require("express");
 
 const patientController = require("../controllers/patientController.js");
+const checkUserMiddleware = require("../middlewares/checkUserMiddleware.js");
 
 const router = express.Router();
 
-router.route("").get(patientController.getPatientDonation);
-router.route("/profile").get(patientController.getPatientProfile);
-router.route("").post(patientController.createPatient);
-router.route("/campaign/new").post(patientController.createCampaign);
-
-// router.route("").get(userController.getAllUsers);
-// router.route("/register").post(userController.register);
-// router.route("/login").post(userController.login);
-// router.route("/:id").delete(userController.deleteUser);
-// router.route("/:id").put(userController.updateUser);
+router
+  .route("")
+  .get(checkUserMiddleware.checkIfPatient, patientController.patient_get);
+router
+  .route("")
+  .post(checkUserMiddleware.checkIfPatient, patientController.patient_post);
+router
+  .route("/profile")
+  .get(
+    checkUserMiddleware.checkIfPatient,
+    patientController.patientProfile_get
+  );
+router
+  .route("/campaign/new")
+  .post(
+    checkUserMiddleware.checkIfPatient,
+    patientController.patientCampaignNew_post
+  );
 
 module.exports = router;

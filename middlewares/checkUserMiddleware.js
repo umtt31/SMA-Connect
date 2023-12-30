@@ -23,18 +23,16 @@ exports.checkUser = async (req, res, next) => {
   }
 };
 
-exports.checkUserDoctor = async (req, res, next) => {
+exports.checkIfDoctor = async (req, res, next) => {
   const token = req.cookies.jwt;
 
   if (token) {
     jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
       if (err) {
         console.log(err.message);
-        res.locals.user = null;
-        next();
+        res.redirect('/login')
       } else {
         const user = await User.findById(decodedToken.userId);
-
         if (user.role === 'doctor') {
           res.locals.user = user;
           next();
@@ -46,18 +44,16 @@ exports.checkUserDoctor = async (req, res, next) => {
   }
 };
 
-exports.checkUserDonator = async (req, res, next) => {
+exports.checkIfDonator = async (req, res, next) => {
   const token = req.cookies.jwt;
 
   if (token) {
     jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
       if (err) {
         console.log(err.message);
-        res.locals.user = null;
-        next();
+        res.redirect('/login')
       } else {
         const user = await User.findById(decodedToken.userId);
-
         if (user.role === 'donator') {
           res.locals.user = user;
           next();
@@ -69,18 +65,16 @@ exports.checkUserDonator = async (req, res, next) => {
   }
 };
 
-exports.checkUserPatient = async (req, res, next) => {
+exports.checkIfPatient = async (req, res, next) => {
   const token = req.cookies.jwt;
 
   if (token) {
-    jwt.verify(token, process.env.JWT_SECRET, async (err, docodedToken) => {
+    jwt.verify(token, process.env.JWT_SECRET, async (err, decodedToken) => {
       if (err) {
         console.log(err.message);
-        res.locals.user = null;
-        next();
+        res.redirect('/login')
       } else {
-        const user = await User.findById(docodedToken.userId);
-
+        const user = await User.findById(decodedToken.userId);
         if (user.role === 'patient') {
           res.locals.user = user;
           next();
