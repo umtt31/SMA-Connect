@@ -29,12 +29,9 @@ exports.makeDonation = async (req, res) => {
   }
 };
 
-// ikbal
 exports.donator_get = async (req, res) => {
   const donator = await Donator.findById(req.session.userID).populate('_id')
-  // const campaign = await Campaign.find({ user: req.session.userID });
-
-  console.log(donator)
+  console.log(req.session.userID)
 
   res.render("donator-dashboard.ejs", {
     donator
