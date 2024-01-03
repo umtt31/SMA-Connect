@@ -142,6 +142,10 @@
 .bg-red {
   background-color:forestgreen; /* Donate button */
 }
+.bg-custom{
+  background-color: forestgreen;
+  
+}
 .bg-green {
   background-color: var(--green-color);
 }

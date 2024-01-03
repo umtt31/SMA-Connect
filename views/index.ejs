@@ -104,11 +104,12 @@
             <div class="info between-flex fs-13">
               <div>
                 <a
-                  class="bg-blue c-white btn-shape"
-                  href="/campaign/<%= campaign._id %>"
-                  >Details</a
-                >
+                class="bg-blue c-white btn-shape"
+                href="/campaign/<%= campaign._id %>"
+                >Details</a
+              >
                 <% if (campaign.isDone === false) {%>
+                 
                 <a
                   class="bg-red c-white btn-shape"
                   href="/donation/<%= campaign._id %>"
@@ -116,8 +117,10 @@
                 >
                 <% } else {%>
                   <p
-                  class="bg-red c-white btn-shape"
+                  class="bg-custom c-white btn-shape"
                   >Done</p
+
+                  
                 >
                 <% } %>
               </div>

@@ -42,12 +42,21 @@
         <label for="bio">Bio:</label>
         <p id="bio"><% campaign.description %></p>
       </div>
-
+      <div class="user-details">
+        <label for="bio">Status:</label>
+        <% if (!campaign.isDone) { %>
+        <p id="bio">On going...</p>
+        <% } else {%>
+        <p id="bio">Done...</p>
+        <% } %>
+      </div>
       <div class="buttons-container">
         <a href="/" class="button blue-btn">Home</a>
+        <% if (!campaign.isDone) { %>
         <a href="/donation/<%= campaign._id %>" class="button green-btn"
           >Donate</a
         >
+        <% } %>
       </div>
     </div>
   </body>
